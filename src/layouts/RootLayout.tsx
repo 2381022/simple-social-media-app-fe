@@ -1,15 +1,22 @@
-import { Outlet } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import { motion } from 'framer-motion';
 
-const RootLayout = () => {
+const RootLayout: React.FC = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-black">
       <Navbar />
-      <div className="container mx-auto px-4">
+      <motion.main 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="container mx-auto px-4 py-6"
+      >
         <Outlet />
-      </div>
+      </motion.main>
     </div>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;
